@@ -47,11 +47,14 @@ int main (int argc, char *argv[]) {
 		perror("accept");
 		return (-1);
 	}
-
-	recv(sd2, (struct myftph_data *)&data, sizeof data, 0);
-
-	printf("type: %d, code: %d, length: %d, \n"
-			"data: %s\n", data.type, data.code, data.length, data.data);
+	
+	memset(&data, 0, sizeof data);
+	recv(sd2, (struct myftph_data*)&data, sizeof data, 0);
+	if (data.type == 0x06) {
+		recv_file(sd2, data.data);
+	} else {
+		printf("errro\n");
+	}
 
     close(sd);
 

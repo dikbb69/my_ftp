@@ -28,9 +28,7 @@ int main(int argc, char *argv[]) {
 		return (-1);
 	}
 
-	set_myftph_data(&data, 5, 17, DATASIZE, "hello\nworld"); 
-
-	send(sd, (struct myftph_data *)&data, sizeof data, 0);
+	send_file(sd, "test.txt", "transfer.txt");
 
 	//close(sd);
 
