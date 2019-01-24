@@ -1,5 +1,5 @@
 #define DATASIZE 1024
-#define PORT 51230 
+#define PORT 51222 
 
 struct myftph_data {
     uint8_t  type;
@@ -25,6 +25,9 @@ extern int send_file(int sd, char *, char *);
 extern int recv_file(int sd, char *path);
 extern void ppkt_data();
 extern void ppkt();
+extern int tokenize(char *, char (*token)[]);
+extern int send_file_r(int sd, char *, char *); 
+extern int recv_file_r(int sd, char *path);
 
 int sd, sd2;
 char buf[1024];
